@@ -13,11 +13,13 @@ menu:
     name: About
     title: About
     url: /about/
-    weight: 0
-  - name: Archive
+    weight: 1
+  main:
+  - identifier: archive
+    name: Archive
     title: Archive
     url: /posts/
-    weight: 1
+    weight: 0
 
 params:
   author: "Giosuè Sulipano"
