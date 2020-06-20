@@ -1,7 +1,7 @@
 ---
 title: "About"
 date: 2020-06-11T21:44:49Z
-draft: true
+draft: false
 author: "Giosuè Sulipano"
 ---
 
