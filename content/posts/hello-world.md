@@ -2,6 +2,7 @@
 title: "cat hello-world.md"
 date: 2020-06-20T11:04:50Z
 draft: false
+summary: "What the hell is this? Wait, we should investigate!"
 ---
 
 What the hell is this?
