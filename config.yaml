@@ -1,5 +1,5 @@
 languageCode: "en-us"
-baseUrl: "http://imgios.github.io/thoughts/"
+baseUrl: "https://imgios.github.io/thoughts/"
 title: "💭 thoughts"
 theme: "anubis"
 paginate: 10
