@@ -1,6 +1,7 @@
 # Override these settings with your own
 languageCode = "en-us"
 baseURL = "https://imgios.github.io/thoughts/"
+title = "💭 thoughts"
 copyright = "imgios © {year}"
 
 # The value "hugo-theme-codex" is only to get the exampleSite
