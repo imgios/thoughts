@@ -8,7 +8,7 @@ install:
 script:
   - pygmentize -V
   - git submodule update --init --recursive
-  - hugo -v
+  - hugo
 
 # Deploy on GitHub Pages
 deploy:
