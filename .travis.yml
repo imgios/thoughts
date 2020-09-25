@@ -1,0 +1,21 @@
+# Clean and don't fail
+install:
+  - sudo pip install pygments
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_0.75.1_Linux-64bit.deb -O /tmp/hugo.deb && sudo dpkg -i /tmp/hugo.deb
+  - rm -rf public || exit 0
+
+# Build the website
+script:
+  - pygmentize -V
+  - git submodule update --init --recursive
+  - hugo -v
+
+# Deploy on GitHub Pages
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  target_branch: gh-pages
+  local_dir: public
+  on:
+    branch: master
