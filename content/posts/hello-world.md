@@ -5,8 +5,6 @@ draft: false
 summary: "What the hell is this? Wait, we should investigate!"
 ---
 
-### What the hell is this?
-
 ```java
 public String hello() {
   return 'Hello World!';
