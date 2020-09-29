@@ -15,7 +15,7 @@ Recently, GitHub has introduced the profile-level README feature, that allows us
 ## What is it?
 
 GitHub, with this feature, let you create a README.md file that is shown in your GitHub profile. This can be useful in order to give further information about yourself more than the profile bio.
-There are hundred of cool things made by the community that can be used in your README, such as:
+There are hundreds of cool things made by the community that can be used in your README, such as:
 - GitHub stats
 - GitHub top languages
 - Extra pins
