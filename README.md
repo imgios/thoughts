@@ -4,5 +4,5 @@
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/built_with-Hugo-blue" alt="Built with Hugo">
-  <a href="https://travis-ci.com/imgios/thoughts"><img src="https://travis-ci.com/imgios/thoughts.svg?token=H8cbpaysTzqtMjCTaDc7&branch=master" alt="Build Status"></a>
+  <a href="https://github.com/imgios/thoughts/actions/workflows/publish.yaml"><img src="https://github.com/imgios/thoughts/actions/workflows/publish.yaml/badge.svg" alt="Build & Deploy Status"></a>
 </p>
