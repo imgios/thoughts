@@ -1,5 +1,5 @@
 ---
 heading: "Hi, I'm Giosuè"
-subheading: "Computer Science MSc student in love with tech."
+subheading: "👨🏻‍💻 IT enthusiast that does random things hoping they work."
 handle: "imgios"
 ---
