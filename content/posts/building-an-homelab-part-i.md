@@ -32,3 +32,11 @@ I would like to get better in system administration and in container devlopment 
 Is it overkill? Maybe.
 
 I imagine it as a huge and long truck used to deliver a small package, but an homelab also gives me the right amount of fun while getting my hands dirty with cables, boards, configurations and so on!
+
+## Homelab topology
+
+As I said before, reusing spare hardware can be a good option to start with an homelab. Actually, my homelab will be composed by:
+- 2x Raspberry Pi 4 8GB
+- TP-Link Switch
+
+Currently, the only "spare" hardware that will be used is the switch, meanwhile the Raspberry Pis are brand new. I decided to start this homelab easy with just few nodes, then I will see how it'll evolve.
