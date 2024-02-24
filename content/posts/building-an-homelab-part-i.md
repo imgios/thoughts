@@ -10,13 +10,12 @@ summary: "Building an homelab with spare hardware and Raspberry Pis can be funny
 
 Spare hardware, Raspberry Pis, servers and mini PCs. What are they? Is it a shopping list? Well, no. These are things that IT enthusiasts usually use to set up a homelab.
 
-## Why am I building an homelab?
-
-Homelab can be made for different purposes:
+Homelabs are made to address different needs and/or purposes. They can be a place to learn and experiment or a safe environment with some services. Some common use cases are:
 - Build an own private cloud to store your files
 - Build your own streaming platform (for educational purposes 👀)
 - Build an ephemeral playground for a specific topic
-- ...
+
+## Why am I building an homelab?
 
 In my case, I'm building it to explore a bit more several topics, such as:
 - System administration
