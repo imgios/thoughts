@@ -25,4 +25,10 @@ In my case, I'm building it to explore a bit more several topics, such as:
 - System administration
 - Self-hosting some services
 - A bit of home automation
-- Experiment new topic (e.g., GitOps)
+- Experiment new topics
+
+I would like to get better in system administration and in container devlopment and orchestration. Furthermore, I would also like to get a small Kubernetes cluster running at home with low power usage that I can use to host some services, such as Home Assistant, Prometheus, Grafana, and so on.
+
+Is it overkill? Maybe.
+
+I imagine it as a huge and long truck used to deliver a small package, but an homelab also gives me the right amount of fun while getting my hands dirty with cables, boards, configurations and so on!
