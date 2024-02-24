@@ -21,3 +21,4 @@ In my case, I'm building it to explore a bit more several topics, such as:
 - System administration
 - Self-hosting some services
 - A bit of home automation
+- Experiment new topic (e.g., GitOps)
