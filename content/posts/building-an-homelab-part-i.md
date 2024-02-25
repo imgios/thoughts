@@ -91,3 +91,11 @@ Codename:       mantic
 imgios@pi02:~$ ip a | grep 192.168
     inet 192.168.1.212/24 metric 600 brd 192.168.1.255 scope global dynamic wlan0
 ```
+
+## Conclusion
+
+The first part is finished. At this stage, this was more like the "analysis and design" phase of the small homelab, deciding which hardware to use and how to configure the networking. I also included a bit of preparation that's basically the DHCP configuration as well as the Raspberry Pis SD card flash, pointing out which IP was being used and which OS I selected. For some reason both my boards refused to work with Raspberry Pi OS / Raspberry Pi OS Lite images, but I know people using it without any issue. So please, do not assume that they are not working, it was just me being unlucky!
+
+I decided to split the adventure in two separated posts, and in the next one I will share how I got the Kubernetes working on the boards with some basic monitoring done with Prometheus and Grafana.
+
+Feel free to reach out to me if you want to discuss that or if you have any question by creating an issue in the following repository: [imgios/imgios](https://github.com/imgios/imgios)
