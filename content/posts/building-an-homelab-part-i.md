@@ -43,3 +43,16 @@ Currently, the only "spare" hardware that will be used is the switch, meanwhile 
 
 ![Homelab Topology](images/simple-homelab-topology.png)
 
+## Preparation
+
+There are few steps to do to configure the Raspberry Pis and set them a fixed IP, in this way they will always get the same IP even if they get rebooted for some reason. This can be done in three similar ways:
+- The first method let us achieve that by updating the modem DHCP subnet mask that is usually set to **/24**, and this means that the modem can assing any IP in the range 192.168.1.1 - 192.168.1.254 (almost the entire subnet!). We can lower this subnet from /24 to /25, in this way the modem will be able to assign any IP in the range 192.168.1.1-192.168.1.127. This approach, leaves us a bunch of free IP from the range 192.168.1.129 - 192.168.1.254 (that's a lot!)
+- Another way to achieve the same result is by updating the modem DHCP range instead of the subnet mask. Using this method, you can keep the default /24 as subnet mask, but you can define both DHCP range start and DHCP range end by setting them to 192.168.1.2-192.168.1.210, in this way you will be able to use any IP from 192.168.1.211-192.168.1.254. Also in this case, you will have a lot of free IPs usable for your homelab.
+- Then we have the easiest way to get a fixed IP for our servers: this method consists of updating the modem DHCP settings by letting it know that a machine with a given MAC address (e.g., 2a-a2-44-6b-0b-4a) will get a fixed (or static) IP (e.g., 192.168.1.211). In this way we still leave the entire subnet to the modem DHCP, but we make sure that a given number of IPs will be reserved for our servers.
+
+At this stage, it doesn't matter which way will be used to get it working.
+
+Once the modem DHCP setting has been updated, I moved to flash the SD cards used to boot my Raspberry Pis. I had to struggle a bit on this step, not because it's hard but my Raspberry Pis decided to refuse the Raspberry Pi OS / Raspberry Pi OS Lite images. Said that, after several tries, I decided to go for the Ubuntu Server image. I used the Raspberry Pi Imager, selected the Ubuntu Server 64-bit image and customised the installation by providing the user to create with the password, and the network IP to set to the board.
+
+![Raspberry Pis Tower](images/raspberry-tower.jpg)
+
