@@ -11,56 +11,56 @@ summary: "Building an homelab with spare hardware and Raspberry Pis can be funny
 Spare hardware, Raspberry Pis, servers and mini PCs. What are they? Is it a shopping list? Well, no. These are things that IT enthusiasts usually use to set up a homelab.
 
 Homelabs are made to address different needs and/or purposes. They can be a place to learn and experiment new topics or a safe environment to spin up self-hosted services. Some common use cases are:
-- Build an own private cloud to store your files
+- Build a private cloud to store your files
 - Build your own streaming platform (for educational purposes 👀)
 - Build an ephemeral playground for a specific topic
 
-Building an homelab can be easy as spinning up some Docker containers on a given machine or complex as setting up a Kubernetes cluster with several nodes. Furthermore, they can be cheap by using spare hardware or expensive buying new hardware to use.
+Building a homelab can be as simple as spinning up few Docker containers on a given machine, or as complex as setting up a multi-node Kubernetes cluster. It can also be cheap, using spare hardware, or expensive, buying new hardware to use.
 
 You decide.
 
-## Why am I building an homelab?
+## Why do I build a homelab?
 
-In my case, I'm building it to explore a bit more several topics, such as:
+In my case, I'm building it to explore a few topics a bit more, such as:
 - System administration
 - Self-hosting some services
 - A bit of home automation
 - Experiment new topics
 
-I would like to get better in system administration and in container devlopment and orchestration. Furthermore, I would also like to get a small Kubernetes cluster running at home with low power usage that I can use to host some services, such as Home Assistant, Prometheus, Grafana, and so on.
+I would like to get better at system administration, container devlopment, and orchestration. I would also like to run a small, low-power Kubernetes cluster at home to host some services, such as Home Assistant, Prometheus, Grafana, and so on.
 
-Is it overkill? Maybe.
+Is this overkill? Maybe.
 
-I imagine it as a huge and long truck used to deliver a small package, but an homelab also gives me the right amount of fun while getting my hands dirty with cables, boards, configurations and so on!
+I think of it as a big, long truck delivering a small package, but a Homelab also gives me the right amount of fun as I get my hands dirty with cables, boards, configurations and so on!
 
 ## Homelab topology
 
-As I said before, reusing spare hardware can be a good option to start with an homelab. Actually, my homelab will be composed by:
+As I said before, reusing spare hardware can be a good way to start with a homelab. Actually, my homelab will consist of:
 - 2x Raspberry Pi 4 8GB
 - TP-Link Switch
 
-Currently, the only "spare" hardware that will be used is the switch, meanwhile the Raspberry Pis are brand new. I decided to start this homelab easy with just few nodes, then I will see how it'll evolve.
+Currently, the only "spare" hardware being used is the switch, while the Raspberry Pis are brand new. I've decided to start this simple homelab with just a few nodes and see how it develops.
 
 ![Homelab Topology](images/simple-homelab-topology.png)
 
 ## Preparation
 
-There are few steps to do to configure the Raspberry Pis and set them a fixed IP, in this way they will always get the same IP even if they get rebooted for some reason. This can be done in three similar ways:
-- The first method let us achieve that by updating the modem DHCP subnet mask that is usually set to **/24**, and this means that the modem can assing any IP in the range 192.168.1.1 - 192.168.1.254 (almost the entire subnet!). We can lower this subnet from /24 to /25, in this way the modem will be able to assign any IP in the range 192.168.1.1-192.168.1.127. This approach, leaves us a bunch of free IP from the range 192.168.1.129 - 192.168.1.254 (that's a lot!)
-- Another way to achieve the same result is by updating the modem DHCP range instead of the subnet mask. Using this method, you can keep the default /24 as subnet mask, but you can define both DHCP range start and DHCP range end by setting them to 192.168.1.2-192.168.1.210, in this way you will be able to use any IP from 192.168.1.211-192.168.1.254. Also in this case, you will have a lot of free IPs usable for your homelab.
-- Then we have the easiest way to get a fixed IP for our servers: this method consists of updating the modem DHCP settings by letting it know that a machine with a given MAC address (e.g., 2a-a2-44-6b-0b-4a) will get a fixed (or static) IP (e.g., 192.168.1.211). In this way we still leave the entire subnet to the modem DHCP, but we make sure that a given number of IPs will be reserved for our servers.
+There are a few steps you can take to configure the Raspberry Pis and give them a fixed IP so that they will always have the same IP, even if they are rebooted for some reason. This can be done in three different ways:
+- The first method is to update the modem's DHCP subnet mask, which is normally set to /24, and this means that the modem can assign any IP in the range 192.168.1.1 - 192.168.1.254 (almost the whole subnet!). We can lower this subnet from /24 to /25, which will allow the modem to assign any IP in the range 192.168.1.1-192.168.1.127. This approach leaves us with a bunch of free IPs in the range 192.168.1.129 - 192.168.1.254 (that's a lot!).
+- Another way to achieve the same result is to update the modem's DHCP range instead of the subnet mask. With this method, you can keep the default /24 as the subnet mask, but you can define both the DHCP range start and the DHCP range end by setting them to 192.168.1.2-192.168.1.210, this way you will be able to use any IP from 192.168.1.211-192.168.1.254. Again, you will have plenty of free IPs to use for your homelab.
+- Then we have the simplest way to get a fixed IP for our servers: this method consists of updating the modem's DHCP settings, telling it that a machine with a given MAC address (e.g. 2a-a2-44-6b-0b-4a) will get a fixed (or static) IP (e.g. 192.168.1.211). In this way, we still leave the whole subnet to the modem's DHCP, but we ensure that a certain number of IPs are reserved for our servers.
 
-At this stage, it doesn't matter which way will be used to get it working. I decided to use 192.168.1.211 for the first Pi and 192.168.1.212 for the second one.
+At this stage, it doesn't matter which method is used to make it work. I decided to use 192.168.1.211 for the first Pi and 192.168.1.212 for the second.
 
-Once the modem DHCP setting has been updated, I moved to flash the SD cards used to boot my Raspberry Pis. I had to struggle a bit on this step, not because it's hard but my Raspberry Pis decided to refuse the Raspberry Pi OS / Raspberry Pi OS Lite images. Said that, after several tries, I decided to go for the Ubuntu Server image. I used the Raspberry Pi Imager, selected the Ubuntu Server 64-bit image and customised the installation by providing the user to create with the password, the hostname, and the network IP to set to the board.
+Once the modem's DHCP setting had been updated, I proceeded to flash the SD cards used to boot my Raspberry Pis. I had to struggle a bit with this step, not because it's difficult, but because my Raspberry Pis decided to reject the Raspberry Pi OS / Raspberry Pi OS Lite images. That said, after several tries I decided to go for the Ubuntu Server image. I used the Raspberry Pi Imager, selected the Ubuntu Server 64-bit image and customised the installation by providing the user to create with the password, hostname and network IP to set on the board.
 
 ![Raspberry Pis Tower](images/raspberry-tower.jpg)
 
 ## Verification
 
-Now that both SD card has been written, it's time to boot up the Raspberry Pis and verify if they are running the Ubuntu Server flawless with the IP I set during the image flash.
+Now that both SD cards have been written, it's time to boot up the Raspberry Pis and verify that they are running Ubuntu Server correctly with the IP I set during the image flash.
 
-Let's connect to the first board using both user and IP set during the SD card flash:
+Let's connect to the first board using both the user and the IP set during the SD card flash:
 
 ```shell
 PS C:\Users\imgios> ssh imgios@pi01
@@ -75,9 +75,9 @@ imgios@pi01:~$ ip a | grep 192.168
     inet 192.168.1.211/24 metric 600 brd 192.168.1.255 scope global dynamic wlan0
 ```
 
-I'm able to access the board using both user and password set during the image flash. Furthermore, I saw that the board took the right IP and has the hostname `pi01` set before.
+I'm able to access the card with both the user and password set during the image flash. I also saw that the card had the correct IP and the hostname pi01.
 
-Let's check the same on the second board:
+Let's check the same thing on the second board:
 
 ```shell
 PS C:\Users\imgios> ssh imgios@pi02
@@ -94,8 +94,8 @@ imgios@pi02:~$ ip a | grep 192.168
 
 ## Conclusion
 
-The first part is finished. At this stage, this was more like the "analysis and design" phase of the small homelab, deciding which hardware to use and how to configure the networking. I also included a bit of preparation that's basically the DHCP configuration as well as the Raspberry Pis SD card flash, pointing out which IP was being used and which OS I selected. For some reason both my boards refused to work with Raspberry Pi OS / Raspberry Pi OS Lite images, but I know people using it without any issue. So please, do not assume that they are not working, it was just me being unlucky!
+The first part is done. At this stage it was more like the "analysis and design" phase of the little homelab, deciding what hardware to use and how to configure the network. I also included a bit of preparation, basically the DHCP configuration and the Raspberry Pis SD card flash, showing which IP was being used and which OS I'd chosen. For some reason, both my boards refused to work with Raspberry Pi OS / Raspberry Pi OS Lite images, but I know people who use them without any problems. So please do not assume that they do not work, it was just my bad luck!
 
-I decided to split the adventure in two separated posts, and in the next one I will share how I got the Kubernetes working on the boards with some basic monitoring done with Prometheus and Grafana.
+I've decided to split the adventure into two separate posts, and in the next one I'll share how I got Kubernetes up and running on the boards, with some basic monitoring using Prometheus and Grafana.
 
-Feel free to reach out to me if you want to discuss that or if you have any question by creating an issue in the following repository: [imgios/imgios](https://github.com/imgios/imgios)
+Feel free to contact me if you want to discuss this or have any questions by creating an issue in the following repository: [imgios/imgios](https://github.com/imgios/imgios)
