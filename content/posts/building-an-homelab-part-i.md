@@ -50,9 +50,44 @@ There are few steps to do to configure the Raspberry Pis and set them a fixed IP
 - Another way to achieve the same result is by updating the modem DHCP range instead of the subnet mask. Using this method, you can keep the default /24 as subnet mask, but you can define both DHCP range start and DHCP range end by setting them to 192.168.1.2-192.168.1.210, in this way you will be able to use any IP from 192.168.1.211-192.168.1.254. Also in this case, you will have a lot of free IPs usable for your homelab.
 - Then we have the easiest way to get a fixed IP for our servers: this method consists of updating the modem DHCP settings by letting it know that a machine with a given MAC address (e.g., 2a-a2-44-6b-0b-4a) will get a fixed (or static) IP (e.g., 192.168.1.211). In this way we still leave the entire subnet to the modem DHCP, but we make sure that a given number of IPs will be reserved for our servers.
 
-At this stage, it doesn't matter which way will be used to get it working.
+At this stage, it doesn't matter which way will be used to get it working. I decided to use 192.168.1.211 for the first Pi and 192.168.1.212 for the second one.
 
-Once the modem DHCP setting has been updated, I moved to flash the SD cards used to boot my Raspberry Pis. I had to struggle a bit on this step, not because it's hard but my Raspberry Pis decided to refuse the Raspberry Pi OS / Raspberry Pi OS Lite images. Said that, after several tries, I decided to go for the Ubuntu Server image. I used the Raspberry Pi Imager, selected the Ubuntu Server 64-bit image and customised the installation by providing the user to create with the password, and the network IP to set to the board.
+Once the modem DHCP setting has been updated, I moved to flash the SD cards used to boot my Raspberry Pis. I had to struggle a bit on this step, not because it's hard but my Raspberry Pis decided to refuse the Raspberry Pi OS / Raspberry Pi OS Lite images. Said that, after several tries, I decided to go for the Ubuntu Server image. I used the Raspberry Pi Imager, selected the Ubuntu Server 64-bit image and customised the installation by providing the user to create with the password, the hostname, and the network IP to set to the board.
 
 ![Raspberry Pis Tower](images/raspberry-tower.jpg)
 
+## Verification
+
+Now that both SD card has been written, it's time to boot up the Raspberry Pis and verify if they are running the Ubuntu Server flawless with the IP I set during the image flash.
+
+Let's connect to the first board using both user and IP set during the SD card flash:
+
+```shell
+PS C:\Users\imgios> ssh imgios@pi01
+imgios@pi01's password:
+imgios@pi01:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 23.10
+Release:        23.10
+Codename:       mantic
+imgios@pi01:~$ ip a | grep 192.168
+    inet 192.168.1.211/24 metric 600 brd 192.168.1.255 scope global dynamic wlan0
+```
+
+I'm able to access the board using both user and password set during the image flash. Furthermore, I saw that the board took the right IP and has the hostname `pi01` set before.
+
+Let's check the same on the second board:
+
+```shell
+PS C:\Users\imgios> ssh imgios@pi02
+imgios@pi02's password:
+imgios@pi02:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 23.10
+Release:        23.10
+Codename:       mantic
+imgios@pi02:~$ ip a | grep 192.168
+    inet 192.168.1.212/24 metric 600 brd 192.168.1.255 scope global dynamic wlan0
+```
