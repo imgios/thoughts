@@ -40,3 +40,6 @@ As I said before, reusing spare hardware can be a good option to start with an h
 - TP-Link Switch
 
 Currently, the only "spare" hardware that will be used is the switch, meanwhile the Raspberry Pis are brand new. I decided to start this homelab easy with just few nodes, then I will see how it'll evolve.
+
+![Homelab Topology](images/simple-homelab-topology.png)
+
