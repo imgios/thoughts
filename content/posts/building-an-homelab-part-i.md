@@ -1,7 +1,7 @@
 ---
 title: "Building an homelab — Part I"
 date: 2024-02-24
-draft: true
+draft: false
 toc: true
 tags: ["homelab", "docker", "kubernetes"]
 keywords: ["homelab", "docker", "kubernetes", "k3s", "raspberry pi"]
