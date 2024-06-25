@@ -5,7 +5,7 @@ draft: false
 toc: true
 tags: ["homelab", "networking"]
 keywords: ["homelab", "networking", "d-link", "access point"]
-summary: "In this post I share my thoughts and experience about using an old D-link DSL 2750B as access point, after that my Wi-Fi range extender died."
+summary: "In this post I share my thoughts and experience about using an old D-Link DSL 2750B as access point, after that my Wi-Fi range extender died."
 ---
 
 Year 2024.
